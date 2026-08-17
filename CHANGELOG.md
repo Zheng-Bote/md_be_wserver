@@ -5,6 +5,16 @@ All notable changes to the `md_be_wserver` project will be documented in this fi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.0] - 2026-08-17
+
+### Added
+- **Medical Devices API:** New endpoints `/api/v1/devices/get_device_types` and `/api/v1/devices/get_devices` for retrieving device configurations.
+- **Google Flatbuffers Integration:** Implemented high-performance binary serialization using Flatbuffers (`fbs/devices.fbs`) for device data exchange.
+- **Database Schema:** Added `devices` and `device_types` tables along with seed data (`migrations/02_devices_schema.sql`).
+
+### Fixed
+- **Postgres Error Handling:** Fixed a bug where `rows.Err()` was not checked in `pgx` queries, which previously caused `permission denied` database errors to be silently swallowed instead of returning an `HTTP 500`.
+
 ## [0.1.0] - 2026-08-16
 
 ### Added

@@ -1,0 +1,32 @@
+namespace fbs;
+
+table DeviceType {
+  id: string;
+  name: string;
+  description: string;
+  created_at: string;
+  last_update: string;
+  active: bool;
+}
+
+table Device {
+  id: string;
+  type_id: string;
+  device_name: string;
+  manufacturer: string;
+  interface: string;
+  description: string;
+  created_at: string;
+  last_update: string;
+  active: bool;
+}
+
+table DeviceTypeList {
+  types: [DeviceType];
+}
+
+table DeviceList {
+  devices: [Device];
+}
+
+root_type DeviceList;
