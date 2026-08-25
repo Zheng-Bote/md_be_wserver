@@ -8,5 +8,5 @@
 | `/api/v1/auth/change-password` | POST   | Yes           | Updates user password (enforced on first login).    |
 | `/api/v1/auth/totp/setup`      | POST   | Yes           | Generates 2FA Secret and Base64 PNG QR Code.        |
 | `/api/v1/auth/totp/verify`     | POST   | Yes           | Verifies initial code to enable 2FA on the account. |
-| `/api/v1/devices/get_device_types` | GET | Yes | Returns a list of all available device types (FlatBuffers). |
-| `/api/v1/devices/get_devices` | GET | Yes | Returns all devices, or filters by `?device_type=<UUID>` or `?id=<UUID>` (FlatBuffers). |
+| `/api/v1/devices/get_device_types` | GET | No | Returns a list of all available device types (FlatBuffers). |
+| `/api/v1/devices/get_devices` | GET | No | Returns all devices, or filters by `?device_type=<UUID>` or `?id=<UUID>` (FlatBuffers). |

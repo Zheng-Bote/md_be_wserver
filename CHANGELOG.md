@@ -5,6 +5,11 @@ All notable changes to the `md_be_wserver` project will be documented in this fi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.1] - 2026-08-25
+
+### Changed
+- **Medical Devices API:** The `/api/v1/devices/get_device_types` and `/api/v1/devices/get_devices` endpoints are now public (unauthenticated) to allow the desktop client to sync devices silently in the background on startup. Authentication is only required when configuring a device.
+
 ## [0.2.0] - 2026-08-17
 
 ### Added
