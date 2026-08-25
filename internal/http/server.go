@@ -121,6 +121,9 @@ func (s *Server) Start() error {
 	mux.HandleFunc("/api/v1/devices/get_device_types", s.handleGetDeviceTypes)
 	mux.HandleFunc("/api/v1/devices/get_devices", s.handleGetDevices)
 
+	// Plugin Download (Protected)
+	mux.Handle("/api/v1/devices/plugin", s.RequireAuth(http.HandlerFunc(s.handleDownloadPlugin)))
+
 	var handler http.Handler = mux
 
 	limit := int64(1 << 20) // default 1MB

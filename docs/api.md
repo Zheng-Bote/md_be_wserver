@@ -10,3 +10,4 @@
 | `/api/v1/auth/totp/verify`     | POST   | Yes           | Verifies initial code to enable 2FA on the account. |
 | `/api/v1/devices/get_device_types` | GET | No | Returns a list of all available device types (FlatBuffers). |
 | `/api/v1/devices/get_devices` | GET | No | Returns all devices, or filters by `?device_type=<UUID>` or `?id=<UUID>` (FlatBuffers). |
+| `/api/v1/devices/plugin` | GET | Yes | Downloads the integration plugin for a specific device using `?id=<UUID>`. |

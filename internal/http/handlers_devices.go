@@ -130,3 +130,21 @@ func (s *Server) handleGetDevices(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/x-flatbuffers")
 	w.Write(builder.FinishedBytes())
 }
+
+func (s *Server) handleDownloadPlugin(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodGet {
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+		return
+	}
+	
+	deviceID := r.URL.Query().Get("id")
+	if deviceID == "" {
+		http.Error(w, "Missing device id", http.StatusBadRequest)
+		return
+	}
+	
+	// Simulate downloading a plugin file
+	w.Header().Set("Content-Disposition", "attachment; filename=plugin_"+deviceID+".dll")
+	w.Header().Set("Content-Type", "application/octet-stream")
+	w.Write([]byte("DUMMY PLUGIN CONTENT FOR DEVICE " + deviceID))
+}
