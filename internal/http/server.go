@@ -117,12 +117,15 @@ func (s *Server) Start() error {
 	mux.Handle("/api/v1/auth/totp/setup", s.RequireAuth(http.HandlerFunc(s.handleTOTPSetup)))
 	mux.Handle("/api/v1/auth/totp/verify", s.RequireAuth(http.HandlerFunc(s.handleTOTPVerify)))
 
-	// Devices Endpoints (Public for sync)
-	mux.HandleFunc("/api/v1/devices/get_device_types", s.handleGetDeviceTypes)
-	mux.HandleFunc("/api/v1/devices/get_devices", s.handleGetDevices)
+	// Devices Endpoints (Protected for sync)
+	mux.Handle("/api/v1/devices/get_device_types", s.RequireAuth(http.HandlerFunc(s.handleGetDeviceTypes)))
+	mux.Handle("/api/v1/devices/get_devices", s.RequireAuth(http.HandlerFunc(s.handleGetDevices)))
 
 	// Plugin Download (Protected)
 	mux.Handle("/api/v1/devices/plugin", s.RequireAuth(http.HandlerFunc(s.handleDownloadPlugin)))
+	
+	// Measurements (Protected)
+	mux.Handle("/api/v1/measurements/upload", s.RequireAuth(http.HandlerFunc(s.handleMeasurementsUpload)))
 
 	var handler http.Handler = mux
 
